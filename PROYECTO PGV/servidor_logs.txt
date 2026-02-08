@@ -1,0 +1,16 @@
+[2026-02-08 20:02:51] [INFO] Sistema de logging inicializado
+[2026-02-08 20:02:51] [INFO] === SERVIDOR DE GESTIÓN DE INCIDENCIAS ===
+[2026-02-08 20:02:51] [INFO] Iniciando servidor en puerto 5000...
+[2026-02-08 20:02:51] [INFO] Cargando incidencias desde persistencia...
+[2026-02-08 20:02:51] [INFO] No hay archivo de persistencia. Iniciando con base de datos vacía.
+[2026-02-08 20:02:51] [INFO] No hay incidencias previas. Base de datos vacía.
+[2026-02-08 20:02:51] [INFO] Servidor iniciado correctamente
+[2026-02-08 20:02:51] [INFO] Esperando conexiones de clientes...
+[2026-02-08 20:02:51] [INFO] Máximo de clientes: 10
+[2026-02-08 20:03:35] [INFO] Nuevo cliente conectado desde: 127.0.0.1
+[2026-02-08 20:03:35] [INFO] Cliente conectado desde 127.0.0.1
+[2026-02-08 20:03:53] [INFO] Intentando autenticación con API para: eve.holt@reqres.in
+[2026-02-08 20:03:54] [WARNING] Autenticación API fallida para: eve.holt@reqres.in (Código: 403)
+[2026-02-08 20:03:54] [INFO] API falló, intentando autenticación local...
+[2026-02-08 20:03:54] [WARNING] ✗ Autenticación fallida para: eve.holt@reqres.in
+[2026-02-08 20:03:54] [WARNING] Intento de login fallido: eve.holt@reqres.in
