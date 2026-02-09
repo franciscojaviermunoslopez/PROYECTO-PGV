@@ -33,13 +33,12 @@ public class Servidor {
 
     /**
      * Inicia el servidor y escucha conexiones
-     * FUNCIONALIDAD EXTRA: Inicializa logging y carga datos persistentes
      */
     public void iniciar() {
         // FUNCIONALIDAD EXTRA: Inicializar sistema de logging
         Logger.inicializar();
 
-        Logger.info("=== SERVIDOR DE GESTIÓN DE INCIDENCIAS ===");
+        Logger.info("SERVIDOR DE GESTIÓN DE INCIDENCIAS ");
         Logger.info("Iniciando servidor en puerto " + PUERTO + "...");
 
         // FUNCIONALIDAD EXTRA: Cargar incidencias guardadas desde disco
@@ -47,7 +46,7 @@ public class Servidor {
         List<Incidencia> incidenciasGuardadas = Persistencia.cargar();
         if (!incidenciasGuardadas.isEmpty()) {
             gestorIncidencias.cargarIncidencias(incidenciasGuardadas);
-            Logger.info("✓ Incidencias recuperadas: " + incidenciasGuardadas.size());
+            Logger.info("Incidencias recuperadas: " + incidenciasGuardadas.size());
         } else {
             Logger.info("No hay incidencias previas. Base de datos vacía.");
         }
@@ -83,7 +82,7 @@ public class Servidor {
                             this);
 
                     // Crear y arrancar un nuevo hilo para este cliente
-                    Thread hiloCliente = new Thread(manejador);
+                    Thread hiloCliente = new Thread(manejador); //thread es un hilo que permite que el servidor maneje varios clientes a la vez 
                     hiloCliente.start();
 
                 } catch (IOException e) {

@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Cliente {
     // Configuración de conexión
-    private static final String HOST = "localhost"; // Cambiar a IP del servidor si está en otra máquina
+    private static final String HOST = "localhost";
     private static final int PUERTO = 5000;
 
     private Socket socket;
@@ -68,7 +68,7 @@ public class Cliente {
      */
     public boolean login() {
         System.out.println();
-        System.out.println("=== INICIO DE SESIÓN ===");
+        System.out.println("INICIO DE SESIÓN");
 
         while (true) {
             System.out.print("Usuario: ");
@@ -97,7 +97,7 @@ public class Cliente {
                     rolUsuario = partes[2];
 
                     System.out.println();
-                    System.out.println("✓ Inicio de sesión exitoso");
+                    System.out.println("Inicio de sesión exitoso");
                     System.out.println("Rol: " + rolUsuario);
                     System.out.println();
                     return true;
@@ -118,17 +118,16 @@ public class Cliente {
 
     /**
      * Muestra el menú de opciones según el rol del usuario
-     * FUNCIONALIDAD EXTRA: Incluye comando EDITAR
      */
     public void mostrarMenu() {
-        System.out.println("=== MENÚ DE OPCIONES ===");
+        System.out.println("MENÚ DE OPCIONES");
         System.out.println("1. ALTA - Crear nueva incidencia");
         System.out.println("2. LISTAR - Ver todas las incidencias");
         System.out.println("3. CERRAR - Cerrar una incidencia");
         System.out.println("4. EDITAR - Editar una incidencia");
 
         if (rolUsuario.equals("ADMINISTRADOR")) {
-            System.out.println("5. CLIENTES - Ver clientes conectados (Solo Admin)");
+            System.out.println("5. CLIENTES - Ver clientes conectados ");
         }
 
         System.out.println("6. SALIR - Cerrar sesión");
@@ -175,7 +174,7 @@ public class Cliente {
                     comando = "CERRAR " + id;
                     break;
 
-                case "4": // EDITAR (FUNCIONALIDAD EXTRA)
+                case "4": // EDITAR
                     System.out.print("ID de la incidencia a editar: ");
                     String idEditar = teclado.nextLine().trim();
 
@@ -237,8 +236,8 @@ public class Cliente {
             // Leer respuesta
             String respuesta = entrada.readLine();
 
-            // Si la respuesta tiene múltiples líneas (como LISTAR), leer todas
-            if (respuesta.contains("===")) {
+            // Si la respuesta es un listado (LISTAR o CLIENTES), leer todas las líneas
+            if (respuesta != null && (respuesta.contains("LISTADO") || respuesta.contains("CLIENTES"))) { 
                 System.out.println(respuesta);
 
                 // Leer líneas adicionales hasta encontrar una vacía o el final
@@ -246,7 +245,7 @@ public class Cliente {
                 while ((linea = entrada.readLine()) != null && !linea.trim().isEmpty()) {
                     System.out.println(linea);
 
-                    // Si no empieza con "ID:" es la última línea
+                    // Si no empieza con "ID:" o "Usuario:", es la última línea
                     if (!linea.startsWith("ID:") && !linea.startsWith("Usuario:")) {
                         break;
                     }
@@ -256,7 +255,6 @@ public class Cliente {
             }
 
         } catch (IOException e) {
-            // FUNCIONALIDAD EXTRA: Gestión robusta de excepciones
             System.err.println("ERROR: Error de comunicación con el servidor");
             System.err.println("El servidor puede haberse desconectado o hay problemas de red");
         } catch (NullPointerException e) {

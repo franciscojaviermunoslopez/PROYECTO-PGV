@@ -30,9 +30,7 @@ public class ManejadorCliente implements Runnable {
     }
 
     /**
-     * Método principal del hilo: se ejecuta cuando se inicia el hilo
-     * FUNCIONALIDAD EXTRA: Gestión mejorada de excepciones con logging
-     */
+     * Método principal del hilo: se ejecuta cuando se inicia el hilo     */
     @Override
     public void run() {
         String ipCliente = socket.getInetAddress().getHostAddress();
@@ -61,7 +59,7 @@ public class ManejadorCliente implements Runnable {
                     salida.println(respuesta);
 
                 } catch (Exception e) {
-                    // GESTIÓN ROBUSTA: capturar cualquier error en el procesamiento
+                    // capturar cualquier error en el procesamiento
                     Logger.error("Error procesando comando de " + ipCliente + ": " + e.getMessage());
                     salida.println("ERROR: Error interno del servidor al procesar el comando");
                 }
@@ -105,7 +103,7 @@ public class ManejadorCliente implements Runnable {
         // Procesar según el comando
         switch (comandoPrincipal) {
             case "LOGIN":
-                return procesarLogin(partes);
+                return procesarLogin(partes); 
 
             case "ALTA":
                 return procesarAlta(partes);
@@ -221,7 +219,7 @@ public class ManejadorCliente implements Runnable {
 
         // Construir la lista de incidencias
         StringBuilder respuesta = new StringBuilder();
-        respuesta.append("=== LISTADO DE INCIDENCIAS ===\n");
+        respuesta.append("LISTADO DE INCIDENCIAS \n");
         for (Incidencia inc : incidencias) {
             respuesta.append(inc.toString()).append("\n");
         }

@@ -75,9 +75,9 @@ public class GestorIncidencias {
     }
 
     /**
-     * Edita la descripción de una incidencia (FUNCIONALIDAD EXTRA)
+     * Edita la descripción de una incidencia 
      * 
-     * @param id               ID de la incidencia a editar
+     * @param id               ID de la incidencia a editar 
      * @param nuevaDescripcion Nueva descripción
      * @return true si se editó correctamente, false si no se encontró
      */
@@ -91,7 +91,7 @@ public class GestorIncidencias {
     }
 
     /**
-     * Carga incidencias desde persistencia (FUNCIONALIDAD EXTRA)
+     * Carga incidencias desde persistencia 
      * Reemplaza las incidencias actuales con las cargadas del disco
      * 
      * @param incidenciasGuardadas Lista de incidencias a cargar
